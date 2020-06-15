@@ -14,4 +14,5 @@
 Route::get('/', function () {
     return view('welcome');
 });
-//hjgdgshdfjsgdf
+Route::any('/text','TextController@text');
+
