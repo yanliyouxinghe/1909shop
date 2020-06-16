@@ -14,5 +14,5 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::any('/text','TextController@text');
+Route::any('/goods/detail','Goods\GoodsController@detail');
 
