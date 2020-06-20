@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 Route::any('/goods/detail','Goods\GoodsController@detail');
 
+Route::any('/text','TextController@text');
