@@ -20,3 +20,23 @@ Route::get('/info', function () {
 Route::any('/goods/detail','Goods\GoodsController@detail');
 
 Route::any('/text','TextController@text');
+
+
+
+
+//用户注册
+//前台：
+Route::get('/user/reg','User\UserController@reg');
+Route::post('/user/regdo','User\UserController@regdo');
+//后台:
+Route::post('/user/reghou','User\UserController@reghou');
+
+
+
+//用户登录
+//前台：
+Route::get('/user/login','User\UserController@login');
+Route::post('/user/logindo','User\UserController@logindo');
+Route::get('/user/center','User\UserController@center');
+//后台:
+Route::post('/user/loginhou','User\UserController@loginhou');
