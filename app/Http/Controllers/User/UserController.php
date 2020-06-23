@@ -64,8 +64,10 @@ class UserController extends Controller
         if($v){
             $res = password_verify($password,$v->password);
             if($res){
-                return redirect('/user/center')->with('msg','登录成功');
-//                Cookie::queue($uid,['user_name'=>$name,'password'=>$password]);
+                setcookie('uid',$v->user_id,time()+3600,'/');
+                setcookie('name',$v->user_name,time()+3600,'/');
+//                return redirect('/user/center')->with('msg','登录成功');
+                header('Refresh:2;url=/user/center');
             }else{
                 return redirect('/user/login')->with('msg','密码错误');
             }
@@ -76,6 +78,10 @@ class UserController extends Controller
     }
 
     public function center(){
-        return view('user.center');
+        if(isset($_COOKIE['uid']) && isset($_COOKIE['name'])){
+            return view('user.center');
+        }else{
+            return view('user.login');
+        }
     }
 }

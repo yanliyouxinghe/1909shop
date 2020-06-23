@@ -16,7 +16,7 @@
         </div>
     @endif
 
-    <h2>欢迎{{}}登录</h2>
+    <h2>欢迎{{$_COOKIE['name']}}登录</h2>
 </center>
 </body>
 <html>
