@@ -40,3 +40,10 @@ Route::post('/user/logindo','User\UserController@logindo');
 Route::get('/user/center','User\UserController@center');
 //后台:
 Route::post('/user/loginhou','User\UserController@loginhou');
+
+
+
+//api
+Route::post('/api/user/apireg','Api\UserController@apireg');
+Route::post('/api/user/login','Api\UserController@logindo');
+Route::post('/api/user/center','Api\UserController@center');

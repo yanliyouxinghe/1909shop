@@ -60,7 +60,7 @@ class UserController extends Controller
             return redirect('/user/login')->with('msg','用户名或密码不能为空');
         }
         $userModel = new User();
-        $v = $userModel::where('user_name',$name)->first();
+        $v = $userModel->where('user_name',$name)->first();
         if($v){
             $res = password_verify($password,$v->password);
             if($res){
