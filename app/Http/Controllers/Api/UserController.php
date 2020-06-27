@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Model\User;
 use App\Model\Token;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
+
 class UserController extends Controller
 {
     public function apireg(Request $request){
@@ -96,7 +98,9 @@ class UserController extends Controller
                     'token' => $token,
                 ];
                 $tokenModel = new Token();
-                $tokenModel->insert($data);
+//                $tokenModel->insert($data);
+
+                Redis::set($token,$v->user_id);
                 $arr = [
                     'code'=>0,
                     'msg'=>'0k',
@@ -124,7 +128,10 @@ class UserController extends Controller
 
     public function center(){
         $token = $_GET['token'];
-        $res = Token::where(['token'=>$token])->first();
+//        存储到数据库
+//        $res = Token::where(['token'=>$token])->first();
+//        存储的redis;
+        $res = Redis::get($token);
         if($res){
             return '欢迎来到个人中心';
         }else{
