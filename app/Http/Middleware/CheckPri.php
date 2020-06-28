@@ -26,7 +26,6 @@ class CheckPri
             echo json_encode($response,JSON_UNESCAPED_UNICODE);
             die;
         }
-
         return $next($request);
     }
 }
