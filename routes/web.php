@@ -46,6 +46,10 @@ Route::post('/user/loginhou','User\UserController@loginhou');
 //api
 Route::post('/api/user/apireg','Api\UserController@apireg');
 Route::post('/api/user/login','Api\UserController@logindo');
-Route::post('/api/user/center','Api\UserController@center')->middleware(['check.pri','check.pro']);
-Route::post('/api/user/order','Api\UserController@order')->middleware(['check.pri','check.pro']);
-Route::post('/api/user/cart','Api\UserController@cart')->middleware(['check.pri','check.pro']);
+
+Route::middleware('check.pri','check.pro')->group(function (){
+  Route::post('/api/user/center','Api\UserController@center');
+Route::post('/api/user/order','Api\UserController@order');
+Route::post('/api/user/cart','Api\UserController@cart');
+});
+
