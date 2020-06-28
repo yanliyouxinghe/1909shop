@@ -126,20 +126,11 @@ class UserController extends Controller
 
 
 
-    public function center(){
-
-        if(isset($_GET['token'])){
-            $token = $_GET['token'];
-        }else{
-            $arr = [
-                'code'=>'2008',
-                'msg'=>'请先登录',
-            ];
-            return $arr;
-        }
+    public function center(Request $request){
 //        存储到数据库
 //        $res = Token::where(['token'=>$token])->first();
 //        存储的redis;
+        $token = $request->input('token');
         $res = Redis::get($token);
         if($res){
             return '欢迎来到个人中心';
@@ -153,27 +144,6 @@ class UserController extends Controller
     }
 
     public function order(){
-
-
-        if(isset($_GET['token'])){
-            $token = $_GET['token'];
-            $res = Redis::get($token);
-            if($res){
-
-            }else{
-                $arr = [
-                    'code'=>'2009',
-                    'msg'=>'请先登录',
-                ];
-                return $arr;
-            }
-        }else{
-            $arr = [
-                'code'=>'2008',
-                'msg'=>'请先登录',
-            ];
-            return $arr;
-        }
         $array = [
             '2786783275874265876',
             '8727538275782623224',
@@ -195,27 +165,6 @@ class UserController extends Controller
 
 
     public function cart(){
-
-
-        if(isset($_GET['token'])){
-            $token = $_GET['token'];
-            $res = Redis::get($token);
-            if($res){
-
-            }else{
-                $arr = [
-                    'code'=>'2009',
-                    'msg'=>'请先登录',
-                ];
-                return $arr;
-            }
-        }else{
-            $arr = [
-                'code'=>'2008',
-                'msg'=>'请先登录',
-            ];
-            return $arr;
-        }
         $array = [
             123424,
             213214,
