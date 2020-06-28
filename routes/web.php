@@ -47,3 +47,5 @@ Route::post('/user/loginhou','User\UserController@loginhou');
 Route::post('/api/user/apireg','Api\UserController@apireg');
 Route::post('/api/user/login','Api\UserController@logindo');
 Route::post('/api/user/center','Api\UserController@center');
+Route::post('/api/user/order','Api\UserController@order');
+Route::post('/api/user/cart','Api\UserController@cart');

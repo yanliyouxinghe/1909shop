@@ -127,7 +127,16 @@ class UserController extends Controller
 
 
     public function center(){
-        $token = $_GET['token'];
+
+        if(isset($_GET['token'])){
+            $token = $_GET['token'];
+        }else{
+            $arr = [
+                'code'=>'2008',
+                'msg'=>'请先登录',
+            ];
+            return $arr;
+        }
 //        存储到数据库
 //        $res = Token::where(['token'=>$token])->first();
 //        存储的redis;
@@ -135,7 +144,92 @@ class UserController extends Controller
         if($res){
             return '欢迎来到个人中心';
         }else{
-            return '请登录';
+            $arr = [
+                'code'=>'2009',
+                'msg'=>'请先登录',
+            ];
+            return $arr;
         }
+    }
+
+    public function order(){
+
+
+        if(isset($_GET['token'])){
+            $token = $_GET['token'];
+            $res = Redis::get($token);
+            if($res){
+
+            }else{
+                $arr = [
+                    'code'=>'2009',
+                    'msg'=>'请先登录',
+                ];
+                return $arr;
+            }
+        }else{
+            $arr = [
+                'code'=>'2008',
+                'msg'=>'请先登录',
+            ];
+            return $arr;
+        }
+        $array = [
+            '2786783275874265876',
+            '8727538275782623224',
+            '6576126347432433156',
+            '4456126347251463156',
+            '7825892983598239483',
+        ];
+
+        $arr = [
+            'code'=>0,
+            'msg'=>'OK',
+            'data' => [
+                'order' => $array
+            ]
+        ];
+        return $arr;
+
+    }
+
+
+    public function cart(){
+
+
+        if(isset($_GET['token'])){
+            $token = $_GET['token'];
+            $res = Redis::get($token);
+            if($res){
+
+            }else{
+                $arr = [
+                    'code'=>'2009',
+                    'msg'=>'请先登录',
+                ];
+                return $arr;
+            }
+        }else{
+            $arr = [
+                'code'=>'2008',
+                'msg'=>'请先登录',
+            ];
+            return $arr;
+        }
+        $array = [
+            123424,
+            213214,
+            435345
+        ];
+
+        $arr = [
+            'code'=>0,
+            'msg'=>'OK',
+            'data' => [
+                'order' => $array
+            ]
+        ];
+        return $arr;
+
     }
 }
