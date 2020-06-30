@@ -20,10 +20,12 @@ Route::get('/info', function () {
 Route::any('/goods/detail','Goods\GoodsController@detail');
 
 Route::any('/text','TextController@text');
+Route::any('/sing','TextController@sing');
 
+Route::any('/text/receive','TextController@receive');
+Route::any('/text/receive_post','TextController@receive_post');
 
-
-
+Route::get('/text/encrypt1','TextController@enctype1');
 //用户注册
 //前台：
 Route::get('/user/reg','User\UserController@reg');
